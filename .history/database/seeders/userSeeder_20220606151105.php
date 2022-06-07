@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class user extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \App\Models\User::factory(User::class, 2)->create()->each(function($user) {
+            $user->sortie()->saveMany(\App\Models\User::factory(Sortie::class, 10)->create([
+                'user_id' => $user->id
+            ]));
+        });
+    }
+}

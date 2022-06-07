@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Lieu extends Model
+{
+    //Relation entre Lieu et Ville
+    public function ville()
+    {
+        return $this->belongsTo('App\Models\Ville');
+    }
+}
